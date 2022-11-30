@@ -20,8 +20,12 @@
 - Promise / Promise.all / Promise.race
 - 节流、防抖
 - 数组去重
+~
 - compose
 - flat
+- curry
+- 继承
+- sleep
 - deepclone
 - eventEmitter
 - list2tree / tree2list

@@ -61,3 +61,50 @@ function myInstanceof(left, right) {
     }
     return false
 }
+
+
+function throttle(fn, delay) {
+    let last = 0
+    return function (...args) {
+        let now = new Date().getTime()
+        if (now - last > delay ) {
+            fn.apply(this, args)
+            last = now
+        }
+    }
+}
+
+function debounce(fn, delay) {
+    let timer = null
+    return function (...args) {
+        clearTimeout(timer)
+        timer = setTimeout(()=>{
+            fn.apply(this, args)
+        }, delay)
+    }
+} 
+
+
+// 去重
+// 测试用例
+// [1, 1, '1', '1', null, null, undefined, 
+// undefined, new String('1'), new String('1'), /a/, /a/, NaN, NaN];
+function unique(arr) {
+    // for循环 indexOf NaN不去重
+
+    // 对象不去重，正则不去重，NaN去重（等同于[...new Set(arr)] ） 
+    let map = new Map()
+    return arr.filter((item)=>{
+        return map.has(item) ? false : (map.set(item, 1))
+    })
+
+    // 全部去重
+    var obj = {};
+    return arr.filter(function(item){
+        return obj[typeof item + item] ? false : (obj[typeof item + item] = true)
+    })
+}
+
+let arr = [1, 1, '1', '1', null, null, undefined, undefined, new String('1'), new String('1'), /a/, /a/, NaN, NaN];
+console.log(unique(arr))
+

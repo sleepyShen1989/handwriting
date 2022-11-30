@@ -1,4 +1,4 @@
-const fn = require('../src/01.callApplyBind')
+const fn = require('../src/001.callApplyBind')
 fn()
 
 // myCall
